@@ -43,7 +43,7 @@ public void setBombs()
 
 public void draw ()
 {
-    background( 0 );
+    background(0);
     if(isWon())
         displayWinningMessage();
 }
@@ -55,6 +55,8 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    fill(150, 150, 150, 400);
+    rect(170, 185, 60, 30);
 }
 public void displayWinningMessage()
 {
@@ -102,9 +104,9 @@ public class MSButton
         {
             displayLosingMessage();
         }
-        else if (countBombs() > 0)
+        else if (countBombs(r, c) > 0)
         {
-            label = countBombs();
+            label = Integer.toString(countBombs(r, c));
         }
         else
         {
@@ -150,6 +152,14 @@ public class MSButton
     {
         int numBombs = 0;
         //your code here
+        if (isValid(row+1, col) && bombs.contains(buttons[row+1][col])){numBombs++;}
+        if (isValid(row-1, col) && bombs.contains(buttons[row-1][col])){numBombs++;}
+        if (isValid(row+1, col+1) && bombs.contains(buttons[row+1][col+1])){numBombs++;}
+        if (isValid(row+1, col-1) && bombs.contains(buttons[row+1][col-1])){numBombs++;}
+        if (isValid(row, col+1) && bombs.contains(buttons[row][col+1])){numBombs++;}
+        if (isValid(row, col-1) && bombs.contains(buttons[row][col-1])){numBombs++;}
+        if (isValid(row-1, col+1) && bombs.contains(buttons[row-1][col+1])){numBombs++;}
+        if (isValid(row-1, col-1) && bombs.contains(buttons[row-1][col-1])){numBombs++;}
         return numBombs;
     }
 }
