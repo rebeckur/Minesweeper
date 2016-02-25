@@ -27,18 +27,20 @@ void setup ()
     {
         setBombs();
     }
+    //System.out.println(bombs.size());
 }
 public void setBombs()
 {
     //your code
     int row = (int)(Math.random()*20);
     int col = (int)(Math.random()*20);
-    if(!bombs.contains(buttons[row][col]))
+    if(bombs.contains(buttons[row][col]))
     {
-        bombs.add(buttons[row][col]);
+        row = (int)(Math.random()*20);
+        col = (int)(Math.random()*20);
     }
+    bombs.add(buttons[row][col]);
     //System.out.println("ROW: " + row + " COL:" + col);
-    //System.out.println(bombs);
 }
 
 public void draw ()
@@ -110,14 +112,22 @@ public class MSButton
         }
         else
         {
-            buttons[r][c-1].mousePressed();
-            buttons[r][c+1].mousePressed();
-            buttons[r-1][c].mousePressed();
-            buttons[r+1][c].mousePressed();
-            buttons[r-1][c-1].mousePressed();
-            buttons[r+1][c-1].mousePressed();
-            buttons[r+1][c+1].mousePressed();
-            buttons[r-1][c+1].mousePressed();
+            if (isValid(r,c-1) && buttons[r][c-1].isMarked())
+                buttons[r][c-1].mousePressed();
+            if (isValid(r,c+1) && buttons[r][c+1].isMarked())
+                buttons[r][c+1].mousePressed();
+            if(isValid(r-1,c) && buttons[r-1][c].isMarked())
+                buttons[r-1][c].mousePressed();
+            if(isValid(r+1,c) && buttons[r+1][c].isMarked())
+                buttons[r+1][c].mousePressed();
+            if(isValid(r-1,c-1) && buttons[r-1][c-1].isMarked())
+                buttons[r-1][c-1].mousePressed();
+            if(isValid(r+1,c-1) && buttons[r+1][c-1].isMarked())
+                buttons[r+1][c-1].mousePressed();
+            if(isValid(r+1,c+1) && buttons[r+1][c+1].isMarked())
+                buttons[r+1][c+1].mousePressed();
+            if(isValid(r-1,c+1) && buttons[r-1][c+1].isMarked())
+                buttons[r-1][c+1].mousePressed();
         }
     }
 
