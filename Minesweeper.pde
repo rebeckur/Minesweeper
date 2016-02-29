@@ -23,7 +23,7 @@ void setup ()
             buttons[i][j] = new MSButton(i, j);
         }
     }
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < 23; i++)
     {
         setBombs();
     }
@@ -47,7 +47,10 @@ public void draw ()
 {
     background(0);
     if(isWon())
+    {
         displayWinningMessage();
+        noLoop();
+    }   
 }
 public boolean isWon()
 {
@@ -57,8 +60,13 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    for (MSButton bomb : bombs)
+    {
+        bomb.setClicked(true);
+    }
     fill(150, 150, 150, 400);
     rect(170, 185, 60, 30);
+    //noLoop();
 }
 public void displayWinningMessage()
 {
@@ -96,9 +104,12 @@ public class MSButton
     
     public void mousePressed () 
     {
-        clicked = true;
+        if (mouseButton == LEFT)
+        {
+            clicked = true;
+        }
         //your code here
-        if (keyPressed)
+        if (mouseButton == RIGHT)
         {
             marked = !marked;
         }
@@ -130,7 +141,6 @@ public class MSButton
                 buttons[r-1][c+1].mousePressed();
         }
     }
-
     public void draw () 
     {    
         if (marked)
@@ -171,6 +181,10 @@ public class MSButton
         if (isValid(row-1, col+1) && bombs.contains(buttons[row-1][col+1])){numBombs++;}
         if (isValid(row-1, col-1) && bombs.contains(buttons[row-1][col-1])){numBombs++;}
         return numBombs;
+    }
+    public void setClicked(boolean c)
+    {
+        clicked = c;
     }
 }
 
