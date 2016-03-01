@@ -1,5 +1,3 @@
-
-
 import de.bezier.guido.*;
 int NUM_ROWS = 20;
 int NUM_COLS = 20; //Declare and initialize NUM_ROWS and NUM_COLS = 20
@@ -23,7 +21,7 @@ void setup ()
             buttons[i][j] = new MSButton(i, j);
         }
     }
-    for (int i = 0; i < 23; i++)
+    for (int i = 0; i < 41; i++)
     {
         setBombs();
     }
@@ -64,9 +62,7 @@ public void displayLosingMessage()
     {
         bomb.setClicked(true);
     }
-    fill(150, 150, 150, 400);
-    rect(170, 185, 60, 30);
-    //noLoop();
+    noLoop();
 }
 public void displayWinningMessage()
 {
