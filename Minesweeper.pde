@@ -47,7 +47,7 @@ public void draw ()
     if(isWon())
     {
         displayWinningMessage();
-        noLoop();
+        //noLoop();
     }   
 }
 public boolean isWon()
@@ -62,7 +62,7 @@ public void displayLosingMessage()
     {
         bomb.setClicked(true);
     }
-    noLoop();
+    //noLoop();
 }
 public void displayWinningMessage()
 {
