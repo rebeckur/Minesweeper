@@ -7,20 +7,22 @@ body {
 
 #content {
     display: block;
-    float: left;
+    float: right;
     margin-left: auto;
     margin-right: auto;
 }
 
 #desc {
     display: block;
-    float: right;
+    float: left;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
+    font-size: 32px;
 }
 
 header {
-	
+	padding: 25px, 25px, 25px, 25px;
 }
 
 footer {
