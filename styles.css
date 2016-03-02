@@ -7,14 +7,14 @@ body {
 
 #content {
     display: block;
-    float: left;
+    float: right;
     margin-left: auto;
     margin-right: auto;
 }
 
 #desc {
     display: block;
-    float: right;
+    float: left;
     margin-left: auto;
     margin-right: auto;
 }
