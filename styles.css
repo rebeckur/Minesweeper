@@ -15,15 +15,14 @@ body {
 
 #desc {
     display: inline-block;
+    position: absolute;
     float: left;
     margin-left: 8%;
     margin-right: 8%;
-    padding: 25px, 25px, 25px, 25px;
     text-align: left;
     font-size: 14px;
     max-width: 350px;
 }
 
 header {
-	padding: 25px, 25px, 25px, 25px;
 }
