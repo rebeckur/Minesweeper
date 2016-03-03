@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(41, 81, 155);
+    background-color: rgb(196, 217, 227);
     color: rgb(0,0,0);
     font-family: 'Gudea', sans-serif;
     text-align: center;
@@ -14,7 +14,7 @@ body {
 }
 
 #desc {
-    display: block;
+    display: inline-block;
     float: left;
     margin-left: 8%;
     margin-right: 8%;
