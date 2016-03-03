@@ -1,22 +1,22 @@
 body {
-    background-color: rgb(200,200,200);
+    background-color: rgb(41, 81, 155);
     color: rgb(0,0,0);
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Gudea', sans-serif;
     text-align: center;
 }
 
 #content {
     display: block;
     float: right;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 #desc {
     display: block;
     float: left;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 8%;
+    margin-right: 8%;
     padding: 25px, 25px, 25px, 25px;
     text-align: left;
     font-size: 14px;
@@ -25,9 +25,4 @@ body {
 
 header {
 	padding: 25px, 25px, 25px, 25px;
-}
-
-footer {
-	font-style: italic;
-	font-size: 90%;
 }
