@@ -58,15 +58,25 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    String loseMessage = "BOOM BABY";
+    for(int co = 5; co < loseMessage.length()+5; co++)
+    {
+        buttons[11][co].setLabel(loseMessage.substring(co-5,co-4));
+    }
     for (MSButton bomb : bombs)
     {
         bomb.setClicked(true);
     }
-    //noLoop();
+    noLoop();
 }
 public void displayWinningMessage()
 {
     //your code here
+    String winMessage = "YOU WIN!!!";
+    for(int co = 5; co < winMessage.length()+5; co++)
+    {
+        buttons[11][co].setLabel(winMessage.substring(co-5,co-4));
+    }
 }
 
 public class MSButton
