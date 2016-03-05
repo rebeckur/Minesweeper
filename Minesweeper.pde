@@ -52,7 +52,35 @@ public void draw ()
 }
 public boolean isWon()
 {
+    int markd = 0;
+    int clickd = 0;
     //your code here
+    for (int r = 0; r < NUM_ROWS; r++)
+    {
+      for (int c = 0; c < NUM_COLS; c++)
+      {
+        if (buttons[r][c].isMarked())
+        {
+          markd++;
+        }
+        else if (buttons[r][c].isClicked())
+        {
+          clickd++; 
+        }
+      }
+    }
+    int bombz = 0;
+    for (MSButton bob : bombs)
+    {
+      if (bob.isMarked())
+      {
+        bombz++; 
+      }
+    }
+    if( (bombz == bombs.size()-1 && markd + clickd == NUM_ROWS*NUM_COLS && bombz == markd) || bombs.size()-1 == (NUM_ROWS*NUM_COLS)-clickd) 
+    {
+        return true;
+    }
     return false;
 }
 public void displayLosingMessage()
@@ -112,14 +140,13 @@ public class MSButton
     {
         if (mouseButton == LEFT)
         {
-            clicked = true;
+          clicked = true;
         }
-        //your code here
-        if (mouseButton == RIGHT)
+        if (mouseButton == RIGHT && label.equals("") && !clicked)
         {
             marked = !marked;
         }
-        else if (bombs.contains(this))
+        else if (bombs.contains(this) && !marked)
         {
             displayLosingMessage();
         }
@@ -193,6 +220,3 @@ public class MSButton
         clicked = c;
     }
 }
-
-
-
