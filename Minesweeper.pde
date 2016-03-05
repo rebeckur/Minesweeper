@@ -21,23 +21,24 @@ void setup ()
             buttons[i][j] = new MSButton(i, j);
         }
     }
-    for (int i = 0; i < 41; i++)
-    {
-        setBombs();
-    }
+    setBombs();
+    
     //System.out.println(bombs.size());
 }
 public void setBombs()
 {
     //your code
-    int row = (int)(Math.random()*20);
-    int col = (int)(Math.random()*20);
-    if(bombs.contains(buttons[row][col]))
+    for (int i = 0; i < 20/*41*/; i++)
     {
-        row = (int)(Math.random()*20);
-        col = (int)(Math.random()*20);
+      int row = (int)(Math.random()*20);
+      int col = (int)(Math.random()*20);
+      if(bombs.contains(buttons[row][col]))
+      {
+          row = (int)(Math.random()*20);
+          col = (int)(Math.random()*20);
+      }
+      bombs.add(buttons[row][col]);
     }
-    bombs.add(buttons[row][col]);
     //System.out.println("ROW: " + row + " COL:" + col);
 }
 
@@ -47,41 +48,21 @@ public void draw ()
     if(isWon())
     {
         displayWinningMessage();
-        //noLoop();
     }   
 }
 public boolean isWon()
 {
-    int markd = 0;
-    int clickd = 0;
-    //your code here
     for (int r = 0; r < NUM_ROWS; r++)
     {
       for (int c = 0; c < NUM_COLS; c++)
       {
-        if (buttons[r][c].isMarked())
-        {
-          markd++;
-        }
-        else if (buttons[r][c].isClicked())
-        {
-          clickd++; 
-        }
+          if(!bombs.contains(buttons[r][c]) && !buttons[r][c].isClicked())
+          { 
+          return false;
+          }
       }
     }
-    int bombz = 0;
-    for (MSButton bob : bombs)
-    {
-      if (bob.isMarked())
-      {
-        bombz++; 
-      }
-    }
-    if( (bombz == bombs.size()-1 && markd + clickd == NUM_ROWS*NUM_COLS && bombz == markd) || bombs.size()-1 == (NUM_ROWS*NUM_COLS)-clickd) 
-    {
-        return true;
-    }
-    return false;
+  return true;
 }
 public void displayLosingMessage()
 {
@@ -138,7 +119,7 @@ public class MSButton
     
     public void mousePressed () 
     {
-        if (mouseButton == LEFT)
+        if (mouseButton == LEFT && label.equals(""))
         {
           clicked = true;
         }
@@ -218,5 +199,17 @@ public class MSButton
     public void setClicked(boolean c)
     {
         clicked = c;
+    }
+}
+
+public void keyPressed(){
+    for(int r = 0; r < NUM_ROWS; r++){
+      for(int c = 0; c < NUM_COLS; c++){
+          bombs.remove(buttons[r][c]);
+          buttons[r][c].marked = false;
+          buttons[r][c].clicked = false;
+          buttons[r][c].setLabel(" ");
+        }
+    setBombs(); 
     }
 }
