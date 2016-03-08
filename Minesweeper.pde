@@ -58,7 +58,7 @@ public boolean isWon()
       {
           if(!bombs.contains(buttons[r][c]) && !buttons[r][c].isClicked())
           { 
-          return false;
+            return false;
           }
       }
     }
@@ -203,13 +203,15 @@ public class MSButton
 }
 
 public void keyPressed(){
-    for(int r = 0; r < NUM_ROWS; r++){
-      for(int c = 0; c < NUM_COLS; c++){
+    for(int r = 0; r < NUM_ROWS; r++)
+    {
+      for(int c = 0; c < NUM_COLS; c++)
+      {
           bombs.remove(buttons[r][c]);
+          buttons[r][c].setLabel("");
           buttons[r][c].marked = false;
           buttons[r][c].clicked = false;
-          buttons[r][c].setLabel(" ");
         }
-    setBombs(); 
     }
+    setBombs(); 
 }
