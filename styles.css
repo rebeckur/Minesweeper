@@ -1,7 +1,7 @@
 body {
     background-color: rgb(201, 255, 226);
     color: rgb(0,0,0);
-    font-family: 'Gudea', sans-serif;
+    font-family: arial;
     text-align: center;
 }
 
@@ -25,4 +25,5 @@ p, #desc {
 }
 
 header {
+    font-family: 'Codystar', cursive;
 }
